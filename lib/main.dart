@@ -33,9 +33,17 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Task extends StatelessWidget {
+class Task extends StatefulWidget {
   final String name;
+
   const Task(this.name, {super.key});
+
+  @override
+  State<Task> createState() => _TaskState();
+}
+
+class _TaskState extends State<Task> {
+  dynamic nivel = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -45,30 +53,94 @@ class Task extends StatelessWidget {
           child: Stack(
             children: [
               Container(
-                color: Colors.blue,
+                color: Colors.deepPurple,
                 height: 140,
               ),
-              Container(
-                color: Colors.white,
-                height: 100,
-                child: Row(
+              Column(
+                children: [
+                  Container(
+                    color: Colors.white,
+                    height: 100,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                            color: Colors.black26, height: 100, width: 72),
+                        Container(
+                            width: 200,
+                            child: Text(
+                              widget.name,
+                              style: TextStyle(
+                                fontSize: 24,
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            )),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (nivel < 11) {
+                                    nivel++;
+                                  }
+                                });
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.greenAccent,
+                                  padding: const EdgeInsets.all(15.0)),
+                              child: Transform.rotate(
+                                angle: 3.14, // Angulo de 180 graus em radianos
+                                child: Icon(
+                                  Icons.diamond_outlined,
+                                  color: Colors.white,
+                                  size: 25,
+                                ),
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                setState(() {
+                                  if (nivel > -11) {
+                                    nivel--;
+                                  }
+                                });
+                              },
+                              child: Icon(
+                                Icons.diamond_outlined,
+                                color: Colors.white,
+                                size: 25,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.redAccent,
+                                  padding: EdgeInsets.all(15.0)),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(color: Colors.black26, height: 100, width: 72),
                       Container(
-                          width: 200,
-                          child: Text(
-                            name,
-                            style: TextStyle(
-                              fontSize: 24,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          )),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Icon(Icons.arrow_drop_up),
-                      )
-                    ]),
+                        child: LinearProgressIndicator(
+                          color: Colors.pink,
+                          value: nivel / 10,
+                        ),
+                        width: MediaQuery.of(context).size.width * 0.6,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          'Nível: ${nivel > 10 ? 'Jedi' : (nivel < -10 ? 'Newbie' : nivel)}',
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
