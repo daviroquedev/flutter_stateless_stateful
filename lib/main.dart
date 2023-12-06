@@ -20,13 +20,34 @@ class MyApp extends StatelessWidget {
             title: Text('Tarefas'),
           ),
           body: ListView(children: [
-            Task('Aprender Flutter'),
-            Task('Melhorar Poo'),
-            Task('Descansar'),
-            Task('Comer'),
-            Task('Revisar Flutter'),
-            Task('Revisar Poo comendo sucrilhos com leitwwwwww'),
-            Task('Jantar'),
+            Task(
+                'Aprender Flutter',
+                'https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png',
+                3),
+            Task(
+                'Melhorar Poo',
+                'https://hermes.dio.me/articles/cover/b426eb2a-48f8-44e2-815b-3236272a7ca5.png',
+                4),
+            Task(
+                'Descansar',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8mTFIJiA71CsM_brlkyxYLTHH--kqpARcw&usqp=CAU',
+                1),
+            Task(
+                'Comer',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpz7xQHPpe3kr0dJ5F5UFTk2YjEewHVKB2SA&usqp=CAU',
+                1),
+            Task(
+                'Revisar Flutter',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-wzWps1uuBquYdWZ3RrfB-lsH1OwA2Oc4Gw&usqp=CAU',
+                1),
+            Task(
+                'Jogar',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMUHVeyU5yqO0WIn83K9ZaGTeNhvqWEfhg8w&usqp=CAU',
+                1),
+            Task(
+                'Jantar',
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaLv6-mm8bl4yUl3NxnwzExHgTSlCAMoMMUw&usqp=CAU',
+                1),
           ]),
           floatingActionButton: FloatingActionButton(onPressed: () {}),
         ));
@@ -35,8 +56,10 @@ class MyApp extends StatelessWidget {
 
 class Task extends StatefulWidget {
   final String name;
+  final String image;
+  final int dificulty;
 
-  const Task(this.name, {super.key});
+  const Task(this.name, this.image, this.dificulty, {super.key});
 
   @override
   State<Task> createState() => _TaskState();
@@ -65,16 +88,67 @@ class _TaskState extends State<Task> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                            color: Colors.black26, height: 100, width: 72),
-                        Container(
-                            width: 200,
-                            child: Text(
-                              widget.name,
-                              style: TextStyle(
-                                fontSize: 24,
-                                overflow: TextOverflow.ellipsis,
-                              ),
+                            color: Colors.black26,
+                            height: 100,
+                            width: 72,
+                            child: Image.network(
+                              widget.image,
+                              fit: BoxFit.cover,
                             )),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                                width: 200,
+                                child: Text(
+                                  widget.name,
+                                  style: TextStyle(
+                                    fontSize: 22,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                )),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: (widget.dificulty >= 1)
+                                      ? Colors.blue
+                                      : Colors.blue[100],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: (widget.dificulty >= 2)
+                                      ? Colors.blue
+                                      : Colors.blue[100],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: (widget.dificulty >= 3)
+                                      ? Colors.blue
+                                      : Colors.blue[100],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: (widget.dificulty >= 4)
+                                      ? Colors.blue
+                                      : Colors.blue[100],
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  size: 15,
+                                  color: (widget.dificulty >= 5)
+                                      ? Colors.blue
+                                      : Colors.blue[100],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -82,7 +156,7 @@ class _TaskState extends State<Task> {
                             ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  if (nivel < 11) {
+                                  if (nivel / widget.dificulty <= 10) {
                                     nivel++;
                                   }
                                 });
@@ -102,7 +176,7 @@ class _TaskState extends State<Task> {
                             ElevatedButton(
                               onPressed: () {
                                 setState(() {
-                                  if (nivel > -11) {
+                                  if (nivel / widget.dificulty >= -10) {
                                     nivel--;
                                   }
                                 });
@@ -127,14 +201,14 @@ class _TaskState extends State<Task> {
                       Container(
                         child: LinearProgressIndicator(
                           color: Colors.pink,
-                          value: nivel / 10,
+                          value: (nivel / widget.dificulty) / 10,
                         ),
                         width: MediaQuery.of(context).size.width * 0.6,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(12),
                         child: Text(
-                          'Nível: ${nivel > 10 ? 'Jedi' : (nivel < -10 ? 'Newbie' : nivel)}',
+                          'Nível: ${nivel / widget.dificulty > 10 ? 'Jedi' : (nivel / widget.dificulty < -10 ? 'Newbie' : nivel)}',
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         ),
                       ),
