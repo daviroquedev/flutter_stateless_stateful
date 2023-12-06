@@ -8,6 +8,11 @@ Stateless e Stateful<br>
 Icons, image network, dinamic progression<br>
 ![image](https://github.com/daviroquedev/flutter_stateless_stateful/assets/101668192/f2db2cb9-c5d3-466e-8daa-1f194214e0a5)
 
+### v3
+BoxDecoration, ShadowBox, Image, AnimatedOpacity, BorderRadius<br>
+![image](https://github.com/daviroquedev/flutter_stateless_stateful/assets/101668192/c069c73d-3d48-4961-8a78-35a1b41a1ecc)
+
+
 
 
 ## Scaffold:
