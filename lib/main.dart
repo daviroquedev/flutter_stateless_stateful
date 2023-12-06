@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool opacity = true;
 
   @override
   Widget build(BuildContext context) {
@@ -19,37 +26,48 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text('Tarefas'),
           ),
-          body: ListView(children: [
-            Task(
-                'Aprender Flutter',
-                'https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png',
-                3),
-            Task(
-                'Melhorar Poo',
-                'https://hermes.dio.me/articles/cover/b426eb2a-48f8-44e2-815b-3236272a7ca5.png',
-                4),
-            Task(
-                'Descansar',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8mTFIJiA71CsM_brlkyxYLTHH--kqpARcw&usqp=CAU',
-                1),
-            Task(
-                'Comer',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpz7xQHPpe3kr0dJ5F5UFTk2YjEewHVKB2SA&usqp=CAU',
-                1),
-            Task(
-                'Revisar Flutter',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-wzWps1uuBquYdWZ3RrfB-lsH1OwA2Oc4Gw&usqp=CAU',
-                1),
-            Task(
-                'Jogar',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMUHVeyU5yqO0WIn83K9ZaGTeNhvqWEfhg8w&usqp=CAU',
-                1),
-            Task(
-                'Jantar',
-                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaLv6-mm8bl4yUl3NxnwzExHgTSlCAMoMMUw&usqp=CAU',
-                1),
-          ]),
-          floatingActionButton: FloatingActionButton(onPressed: () {}),
+          body: AnimatedOpacity(
+            opacity: opacity ? 1 : 0,
+            duration: Duration(milliseconds: 1000),
+            child: ListView(children: [
+              Task(
+                  'Aprender Flutter',
+                  'https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png',
+                  3),
+              Task(
+                  'Melhorar Poo',
+                  'https://hermes.dio.me/articles/cover/b426eb2a-48f8-44e2-815b-3236272a7ca5.png',
+                  4),
+              Task(
+                  'Descansar',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQz8mTFIJiA71CsM_brlkyxYLTHH--kqpARcw&usqp=CAU',
+                  1),
+              Task(
+                  'Comer',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpz7xQHPpe3kr0dJ5F5UFTk2YjEewHVKB2SA&usqp=CAU',
+                  1),
+              Task(
+                  'Revisar Flutter',
+                  'https://play-lh.googleusercontent.com/5e7z5YCt7fplN4qndpYzpJjYmuzM2WSrfs35KxnEw-Ku1sClHRWHoIDSw3a3YS5WpGcI',
+                  1),
+              Task(
+                  'Jogar',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMUHVeyU5yqO0WIn83K9ZaGTeNhvqWEfhg8w&usqp=CAU',
+                  1),
+              Task(
+                  'Jantar',
+                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaLv6-mm8bl4yUl3NxnwzExHgTSlCAMoMMUw&usqp=CAU',
+                  1),
+            ]),
+          ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                opacity = !opacity;
+              });
+            },
+            child: Icon(Icons.remove_red_eye),
+          ),
         ));
   }
 }
@@ -76,24 +94,43 @@ class _TaskState extends State<Task> {
           child: Stack(
             children: [
               Container(
-                color: Colors.deepPurple,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5), // Cor da sombra
+                      spreadRadius: 2, // Raio de propagação da sombra
+                      blurRadius: 4, // Raio de desfoque da sombra
+                      offset: Offset(0,
+                          2), // Deslocamento da sombra em relação ao Container
+                    ),
+                  ],
+                  color: Colors.deepPurple,
+                ),
                 height: 140,
               ),
               Column(
                 children: [
                   Container(
-                    color: Colors.white,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: Colors.white,
+                    ),
                     height: 100,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                            color: Colors.black26,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(4),
+                              color: Colors.black26,
+                            ),
                             height: 100,
                             width: 72,
-                            child: Image.network(
-                              widget.image,
-                              fit: BoxFit.cover,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(4),
+                              child: Image.network(widget.image,
+                                  fit: BoxFit.cover),
                             )),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.center,
