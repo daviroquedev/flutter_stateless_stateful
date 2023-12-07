@@ -9,7 +9,7 @@ Icons, image network, dinamic progression<br>
 ![image](https://github.com/daviroquedev/flutter_stateless_stateful/assets/101668192/f2db2cb9-c5d3-466e-8daa-1f194214e0a5)
 
 ### v3
-BoxDecoration, ShadowBox, Image, AnimatedOpacity, BorderRadius<br>
+BoxDecoration, BoxShadow, Image, AnimatedOpacity, BorderRadius<br>
 ![image](https://github.com/daviroquedev/flutter_stateless_stateful/assets/101668192/c069c73d-3d48-4961-8a78-35a1b41a1ecc)
 
 
@@ -70,3 +70,29 @@ Entendemos a importância de saber escolher usar Assets ou Network para carregar
 ## Warnings:
 
 Pode parecer apenas TOC, mas um código com Warnings é um código ineficiente. Aprendemos a identificar os Warnings no nosso código e retirá-los um a um, para melhorar o desempenho do nosso projeto.
+
+# V4
+
+## Permitir interação com app com o widget formulário:
+Criamos a base da tela de formulário com container e column. Também “embelezamos” nossa tela com color, BorderRadius e border.
+
+## Utilizar campos de texto com TextField:
+Consultando o Cookbook, criamos e estilizamos um campo de texto em que o usuário do app pode digitar informações. Vimos que existem dois tipos: TextField e TextFormField.
+
+## Implementar campos de texto com o TextFormField:
+Para permitir a criação de novas tarefas no app, utilizamos e estilizamos o TextFormField para implementar campos de texto em que o usuário pode digitar informações;
+
+Vimos que o diferencial do TextFormField é o parâmetro validator (Validação em português). Por exemplo, no campo de texto destinado à dificuldade, queremos garantir que o usuário insira números; o validator nos ajuda a validar essa informação inserida.
+
+## Gerenciar informações com o Controller:
+Com a finalidade de gerenciar e armazenar as informações dos campos de texto, utilizamos um parâmetro (do TextFormField) chamado Controller. Para operar o Controller, criamos uma variável, chamamos ela no Controller e fizemos testes com print para verificar se estava tudo certinho com o armazenamento das informações digitadas nos campos de texto do formulário.
+
+Fizemos a “conversão” de string para inteiro com a função ìnt.parse`, permitindo a manipulação de números no campo da dificuldade (controlado pelo difficultyController.text).
+
+## Inserir uma imagem na tarefa:
+
+Planejamos que o usuário adicione uma imagem que é mostrada em tempo real no formulário! Fizemos isso com um Container estilizado e seu filho (child) Image.network(imageController.text), que basicamente puxa uma imagem do nosso campo de texto. Para exibir a imagem em tempo real, utilizamos o setState dentro do TextFormField.
+
+## Tratar erros com o ErrorBuilder
+
+Começamos a cuidar dos bichos-papões! Com o ErroBuilder, que fica de olho em exceções, criamos uma solução no caso de imagens inválidas! Em caso de erro (se não houver imagem ou ela for inválida), o ErrorBuilder constrói (retorna) uma imagem fixa que indica que não há imagens. Assim, nosso app fica elegante e informa algo útil ao usuário. Chique demais, né?
