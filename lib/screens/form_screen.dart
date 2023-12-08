@@ -26,12 +26,12 @@ class _FormScreenState extends State<FormScreen> {
             height: MediaQuery.of(context).size.height * 0.9,
             width: MediaQuery.of(context).size.width * 0.95,
             decoration: BoxDecoration(
-              color: Colors.black12,
+              color: const Color.fromARGB(255, 221, 168, 245),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(width: 3),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
+                  color: Color.fromARGB(255, 255, 221, 251).withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 4,
                   offset: const Offset(0, 2),
@@ -137,6 +137,7 @@ class _FormScreenState extends State<FormScreen> {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                   content: Text('Salvando nova tarefa')));
+                          Navigator.pop(context);
                         }
                       },
                       child: const Text('Adicionar!'))

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stateless_stateful/components/task.dart';
+import 'package:flutter_stateless_stateful/screens/form_screen.dart';
 
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
@@ -17,6 +18,7 @@ class _InitialScreenState extends State<InitialScreen> {
       appBar: AppBar(
         title: const Text('Tarefas'),
       ),
+      backgroundColor: const Color.fromARGB(255, 221, 168, 245),
       body: AnimatedOpacity(
         opacity: opacity ? 1 : 0,
         duration: const Duration(milliseconds: 1000),
@@ -54,13 +56,30 @@ class _InitialScreenState extends State<InitialScreen> {
           ),
         ]),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            opacity = !opacity;
-          });
-        },
-        child: const Icon(Icons.remove_red_eye),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 32),
+            child: FloatingActionButton(
+              onPressed: () {
+                setState(() {
+                  opacity = !opacity;
+                });
+              },
+              child: const Icon(Icons.remove_red_eye),
+            ),
+          ),
+          const SizedBox(height: 16),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const FormScreen()));
+            },
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }

@@ -112,3 +112,23 @@ Vimos que as validações precisam de alguém para cuidar delas. É aí que entr
 
 ## Mostrar ao usuário que a informação foi enviada com o Snackbar:
 Para dar mais clareza sobre o app, criamos uma barra na parte inferior da tela que informa, ao usuário, que as informações inseridas no formulário estão corretas e sendo salvas. A snackbar pertence ao Scaffold e aparece apenas quando todas as validações dão certo (e desaparece automaticamente)!
+
+# V5
+Navegação
+
+## Entender os conceitos de navegação e rotas:
+
+Aprendemos dois conceitos importantes: navegação e rotas. No mundo real, navegação é o ato de ir de uma tela a outra; rota é o caminho de um lugar a outro. Em Flutter, o widget Navigator permite a navegação entre duas telas. Já routes, (“rotas”) são as telas que serão trocadas durante a navegação.
+
+## Identificar os principais tipos de navegação:
+<ul>
+<li>Navegação para apps: envolve um caminho único tanto na ida quanto na volta, uma tela por vez. Também, esse tipo de navegação é por meio de pilhas e se dá num modelo chamado de imperativo, mais linear e rígido;</li>
+<li>Navegação em websites: permite caminhos diversos, é mais dinâmica, há mais liberdade, segue o modelo declarativo - mais complexo. É chamada de navegação 2.0;</li>
+<li>Rotas anônimas: o jeito mais simples de ir de uma tela a outra em Flutter, utiliza o widget Navigator para adicionar ou retirar uma tela da pilha;</li>
+<li>Rotas nomeadas: dá nomes às telas, organizando a navegação e se aplica melhor a um app tem muitas telas. A configuração é mais trabalhosa.</li>
+</ul>
+
+
+## Aplicar a navegação entre duas telas em um app:
+
+Aplicamos a navegação da tela inicial para a tela de formulário. Em primeiro lugar, criamos um botão (FloatingActionButton) que ativa o Navigator.push para criar a rota entre as telas e adicionar uma tela na pilha; depois, na tela de formulário, dentro do botão “adicionar” (ElevatedButton), utilizamos um navigator.pop para tirar a tela de formulário da pilha, retornando o app à tela inicial. Assim, quando o usuário apertar no botão “adicionar” da tela de formulário, vai retornar à página inicial.
