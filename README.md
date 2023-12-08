@@ -12,6 +12,12 @@ Icons, image network, dinamic progression<br>
 BoxDecoration, BoxShadow, Image, AnimatedOpacity, BorderRadius<br>
 ![image](https://github.com/daviroquedev/flutter_stateless_stateful/assets/101668192/c069c73d-3d48-4961-8a78-35a1b41a1ecc)
 
+### v5
+Navigator<br>
+![image](https://github.com/daviroquedev/flutter_stateless_stateful/assets/101668192/35bd064d-f581-4180-923e-eca7704898af)
+![image](https://github.com/daviroquedev/flutter_stateless_stateful/assets/101668192/e01121fa-2ad4-4668-8c82-188bdf76209c)
+
+
 
 
 
