@@ -68,7 +68,9 @@ class _InitialScreenState extends State<InitialScreen> {
                   opacity = !opacity;
                 });
               },
-              child: const Icon(Icons.remove_red_eye),
+              child: opacity
+                  ? const Icon(Icons.remove_red_eye_outlined) // Ícone com linha
+                  : const Icon(Icons.remove_red_eye), // Ícone com olho aberto
             ),
           ),
           const SizedBox(height: 16),

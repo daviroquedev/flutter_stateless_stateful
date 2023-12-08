@@ -130,14 +130,14 @@ class _TaskState extends State<Task> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: LinearProgressIndicator(
-                        color: nivel > 20
-                            ? const Color.fromARGB(255, 44, 3,
-                                248) // Se o nível for maior que 20, a cor é azul
-                            : nivel >= 10
-                                ? Colors
-                                    .blue // Se o nível for maior ou igual a 0, a cor é azul claro
-                                : const Color.fromARGB(255, 59, 255,
-                                    72), // Se nível for menor que 0, a cor é verde
+                        color: nivel / widget.dificulty > 10
+                            ? const Color.fromARGB(255, 1, 245,
+                                147) // Se o nível for maior que 20, a cor é azul
+                            : nivel / widget.dificulty >= 5
+                                ? Color.fromARGB(255, 81, 179,
+                                    79) // Se o nível for maior ou igual a 0, a cor é azul claro
+                                : Color.fromARGB(255, 182, 236,
+                                    2), // Se nível for menor que 0, a cor é verde
                         value: (nivel / widget.dificulty) / 10,
                       ),
                     ),

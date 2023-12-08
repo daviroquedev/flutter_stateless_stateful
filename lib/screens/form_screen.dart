@@ -31,7 +31,8 @@ class _FormScreenState extends State<FormScreen> {
               border: Border.all(width: 3),
               boxShadow: [
                 BoxShadow(
-                  color: Color.fromARGB(255, 255, 221, 251).withOpacity(0.5),
+                  color:
+                      const Color.fromARGB(255, 255, 221, 251).withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 4,
                   offset: const Offset(0, 2),
