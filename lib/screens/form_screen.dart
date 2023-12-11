@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_stateless_stateful/data/task_inherited.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+  const FormScreen({super.key, required this.taskContext});
+  final BuildContext taskContext;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -134,10 +136,16 @@ class _FormScreenState extends State<FormScreen> {
                           print(nameController.text);
                           print(difficultyController.text);
                           print(imageController.text);
-
+                          TaskInherited.of(widget.taskContext).newTask(
+                              nameController.text,
+                              imageController.text,
+                              int.parse(difficultyController.text));
+                          print(nameController.text);
+                          print(difficultyController.text);
+                          print(imageController.text);
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                  content: Text('Salvando nova tarefa')));
+                                  content: Text('Criando nova tarefa')));
                           Navigator.pop(context);
                         }
                       },

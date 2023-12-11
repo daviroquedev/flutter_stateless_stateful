@@ -54,7 +54,7 @@ class _TaskState extends State<Task> {
                             color: Colors.black26,
                           ),
                           height: 100,
-                          width: 72,
+                          width: 70,
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(4),
                             child:
@@ -91,14 +91,14 @@ class _TaskState extends State<Task> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.greenAccent,
-                                padding: const EdgeInsets.all(15.0)),
+                              backgroundColor: Colors.greenAccent,
+                            ),
                             child: Transform.rotate(
                               angle: 3.14, // Angulo de 180 graus em radianos
                               child: const Icon(
                                 Icons.diamond_outlined,
                                 color: Colors.white,
-                                size: 25,
+                                size: 20,
                               ),
                             ),
                           ),
@@ -111,12 +111,12 @@ class _TaskState extends State<Task> {
                               });
                             },
                             style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.redAccent,
-                                padding: const EdgeInsets.all(15.0)),
+                              backgroundColor: Colors.redAccent,
+                            ),
                             child: const Icon(
                               Icons.diamond_outlined,
                               color: Colors.white,
-                              size: 25,
+                              size: 20,
                             ),
                           ),
                         ],
