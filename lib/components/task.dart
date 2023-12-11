@@ -6,15 +6,15 @@ class Task extends StatefulWidget {
   final String image;
   final int dificulty;
 
-  const Task(this.name, this.image, this.dificulty, {super.key});
+  Task(this.name, this.image, this.dificulty, {super.key});
+
+  int nivel = 0;
 
   @override
   State<Task> createState() => _TaskState();
 }
 
 class _TaskState extends State<Task> {
-  dynamic nivel = 0;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -85,8 +85,8 @@ class _TaskState extends State<Task> {
                           ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                if (nivel / widget.dificulty <= 10) {
-                                  nivel++;
+                                if (widget.nivel / widget.dificulty <= 10) {
+                                  widget.nivel++;
                                 }
                               });
                             },
@@ -105,8 +105,8 @@ class _TaskState extends State<Task> {
                           ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                if (nivel / widget.dificulty >= -10) {
-                                  nivel--;
+                                if (widget.nivel / widget.dificulty >= -10) {
+                                  widget.nivel--;
                                 }
                               });
                             },
@@ -130,21 +130,21 @@ class _TaskState extends State<Task> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width * 0.6,
                       child: LinearProgressIndicator(
-                        color: nivel / widget.dificulty > 10
+                        color: widget.nivel / widget.dificulty > 10
                             ? const Color.fromARGB(255, 1, 245,
                                 147) // Se o nível for maior que 20, a cor é azul
-                            : nivel / widget.dificulty >= 5
+                            : widget.nivel / widget.dificulty >= 5
                                 ? Color.fromARGB(255, 81, 179,
                                     79) // Se o nível for maior ou igual a 0, a cor é azul claro
                                 : Color.fromARGB(255, 182, 236,
                                     2), // Se nível for menor que 0, a cor é verde
-                        value: (nivel / widget.dificulty) / 10,
+                        value: (widget.nivel / widget.dificulty) / 10,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(12),
                       child: Text(
-                        'Nível: ${nivel / widget.dificulty > 10 ? 'Jedi' : (nivel / widget.dificulty < -10 ? 'Newbie' : nivel)}',
+                        'Nível: ${widget.nivel / widget.dificulty > 10 ? 'Jedi' : (widget.nivel / widget.dificulty < -10 ? 'Newbie' : widget.nivel)}',
                         style:
                             const TextStyle(color: Colors.white, fontSize: 16),
                       ),

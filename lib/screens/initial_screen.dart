@@ -23,7 +23,10 @@ class _InitialScreenState extends State<InitialScreen> {
       body: AnimatedOpacity(
         opacity: opacity ? 1 : 0,
         duration: const Duration(milliseconds: 1000),
-        child: ListView(children: TaskInherited.of(context).taskList),
+        child: ListView(
+          children: TaskInherited.of(context).taskList,
+          padding: EdgeInsets.only(top: 8, bottom: 70),
+        ),
       ),
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
