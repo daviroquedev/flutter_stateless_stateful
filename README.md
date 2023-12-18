@@ -160,3 +160,31 @@ Em resumo, contexto é o local onde a informação se encontra. Por exemplo, a t
 ## Salvar uma tarefa na lista da tela inicial:
 
 Após compreender o conceito de contexto, implementamos a funcionalidade de salvar uma nova tarefa na tela inicial do app!
+
+
+# V7
+
+Adicionando persistencias
+
+## Path/Caminho: 
+
+Para abrir/criar um banco de dados, precisamos saber qual o caminho do arquivo; esse caminho é o endereço onde nosso arquivo foi salvo no dispositivo. Cada dispositivo possui um caminho diferente e, para sabermos qual o caminho padrão, utilizamos o pacote path.
+## Estrutura de Dados: 
+
+Quando montamos nosso banco de dados, estamos definindo/delimitando seu formato, quais serão suas características, sua quantidade de informação para cada dado salvo. No nosso caso, nossos dados precisam de nome, dificuldade, imagem (e quem sabe nível). Para isso, criamos uma variável do tipo string e nela usamos a linguagem SQL para produzir um banco de dados que será lido pelo SQFLite.
+
+## DAO: 
+
+Seguindo as boas práticas, implementamos uma forma de separação entre o banco de dados e o código em Flutter, garantindo que os métodos que se comunicam com o SQL sejam separados de quaisquer outros métodos que não interagem com o banco. O Objeto de Acesso a Dados (DAO) é considerado uma interface que integra e ao mesmo tempo divide o mundo do Flutter e o mundo do Back-End.
+
+## CRUD: 
+
+Operações de manipulação para banco de dados, CRUD é um acrônimo vindo do inglês: Create, Read, Update, Delete - que traduzido significa respectivamente, Criar, Ler, Atualizar e Deletar. Aprendemos os conceitos de CRUD e como eles funcionam no pacote sqflite.
+
+## Buscar Informações: 
+
+Iniciamos nossa implementação do CRUD pelo Read (Leitura) e vimos como implementar as funções find() e findAll() que buscam informações do banco de dados através do método query() disponível para objetos do tipo Database, importado do pacote sqflite.
+
+## Transformar Objetos: 
+
+Notamos a necessidade de trabalhar com objetos do tipo Map<String,dynamic> e do tipo List<Task> quando nos envolvemos com o banco de dados. Assim, para que nosso projeto possa se comunicar com o banco de dados, aprendemos a transformar objetos do tipo mapa - vindo do banco de dados - para objetos do tipo Lista de Tarefas - usados para construir a tela.
