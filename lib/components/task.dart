@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_stateless_stateful/components/difficulty.dart';
+import 'package:flutter_stateless_stateful/data/task_dao.dart';
 
 class Task extends StatefulWidget {
   final String name;
@@ -83,6 +84,9 @@ class _TaskState extends State<Task> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           ElevatedButton(
+                            onLongPress: () {
+                              TaskDao().delete(widget.name);
+                            },
                             onPressed: () {
                               setState(() {
                                 if (widget.nivel / widget.dificulty <= 10) {
@@ -103,6 +107,9 @@ class _TaskState extends State<Task> {
                             ),
                           ),
                           ElevatedButton(
+                            onLongPress: () {
+                              TaskDao().delete(widget.name);
+                            },
                             onPressed: () {
                               setState(() {
                                 if (widget.nivel / widget.dificulty >= -10) {

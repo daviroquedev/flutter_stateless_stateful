@@ -188,3 +188,18 @@ Iniciamos nossa implementação do CRUD pelo Read (Leitura) e vimos como impleme
 ## Transformar Objetos: 
 
 Notamos a necessidade de trabalhar com objetos do tipo Map<String,dynamic> e do tipo List<Task> quando nos envolvemos com o banco de dados. Assim, para que nosso projeto possa se comunicar com o banco de dados, aprendemos a transformar objetos do tipo mapa - vindo do banco de dados - para objetos do tipo Lista de Tarefas - usados para construir a tela.
+
+## FutureBuilder:
+
+Widget de construção de tela capaz de esperar por uma informação assíncrona. O FutureBuilder precisa obrigatoriamente de dois parâmetros: O future:, responsável pela informação assíncrona e o builder:, responsável pela construção da tela. Vale lembrar que usamos o conceito de snapshot como variável capaz de armazenar as informações assíncronas.
+
+## ConnectionState: 
+
+Aprendemos que ao lidar com banco de dados (ou qualquer informação que venha de fora do nosso projeto) temos de nos alertar do tempo de espera da informação. Hoje é muito comum acreditarmos que, por ser extremamente veloz, não temos um tempo de espera ao receber dados. Porém, existe um momento em que as informações não estão completas e, nesse caso, usamos o ConnectionState (que é o estado atual do snapshot) para construir diversas telas dependendo do estado da informação.
+
+## Adicionar informações no DB: 
+
+Na parte crucial da implementação no nosso projeto, adicionamos ao formulário a habilidade de salvar uma tarefa diretamente no banco de dados, para isso relembramos os dados controlados vindo do formulário e aplicamos a função save() vinda do DAO e, dessa forma, adicionamos uma nova tarefa ao banco de dados.
+
+## Deletar informações no DB: 
+Para remoção de Tarefas no nosso banco de dados, foi implementado o método delete() dentro da Classe Task, usando uma ação secundária (onLongPress) no ElevatedButton anteriormente implementado.

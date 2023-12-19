@@ -18,6 +18,13 @@ class _InitialScreenState extends State<InitialScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                setState(() {});
+              },
+              icon: const Icon(Icons.refresh))
+        ],
         title: const Text('Tarefas'),
       ),
       backgroundColor: const Color.fromARGB(255, 221, 168, 245),
