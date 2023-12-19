@@ -202,4 +202,5 @@ Aprendemos que ao lidar com banco de dados (ou qualquer informação que venha d
 Na parte crucial da implementação no nosso projeto, adicionamos ao formulário a habilidade de salvar uma tarefa diretamente no banco de dados, para isso relembramos os dados controlados vindo do formulário e aplicamos a função save() vinda do DAO e, dessa forma, adicionamos uma nova tarefa ao banco de dados.
 
 ## Deletar informações no DB: 
+
 Para remoção de Tarefas no nosso banco de dados, foi implementado o método delete() dentro da Classe Task, usando uma ação secundária (onLongPress) no ElevatedButton anteriormente implementado.
